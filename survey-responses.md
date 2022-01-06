@@ -15,4 +15,4 @@ To create the ETL Workflow in Domo Analytics:
 7. Select Columns that are needed
 8. Remove Duplicates
   
-![ETL Workflow for Return All Survey Responses as described in ordered list](https://jenniferlynnwagner.com/img/etl/domo-etl-survey-responses.png)
+![ETL Workflow for Return All Survey Responses as described in ordered list](https://jenniferlynnwagner.com/img/etl/domo-etl-survey.png)
