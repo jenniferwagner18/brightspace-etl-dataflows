@@ -10,8 +10,9 @@ To create the ETL Workflow in Domo Analytics:
 2. Inner join with Users on UserId to get students' names
 3. Inner join with Survey User Answer Responses on AttemptId to get students' responses
 4. Inner join with Survey Question Answers on AnswerId to get text of options/statements within the Likert question
-5. Filter rows so that IsDeleted equals False
-6. Select Columns that are needed
-7. Remove Duplicates
+5. Inner join with Question Library on QuestionId and QuestionVersionId to get text of question (not needed if using one Likert question)
+6. Filter rows so that IsDeleted equals False
+7. Select Columns that are needed
+8. Remove Duplicates
   
 ![ETL Workflow for Return All Survey Responses as described in ordered list](https://jenniferlynnwagner.com/img/etl/domo-etl-survey-responses.png)
