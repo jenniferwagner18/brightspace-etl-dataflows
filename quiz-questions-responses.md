@@ -2,7 +2,7 @@
 
 Although instructors can export quiz questions and student responses under Statistics for each quiz in D2L, each quiz must be exported separately. The following workflow can return data on all quizzes in a course or multiple courses when filtering by OrgUnitId(s). Filtering by individual QuizId is also possible, which can be found in the URL when hovering over the quiz name in D2L.
 
-Note: This workflow does not return the possible answer choices to the questions. The responses to Written Response type questions will be truncated to 1,000 characters by default. If you need a longer character limit, contact D2L support.
+Note: This workflow does not return the possible answer choices to the questions. (See [Quiz Questions and Possible Answer Choices](https://github.com/jenniferwagner18/brightspace-etl-workflows/blob/main/quiz-questions-answers.md)). The responses to Written Response type questions will be truncated to 1,000 characters by default. If you need a longer character limit, contact D2L support.
 
 ## Return All Quiz Questions and Student Responses by Course or Quiz
 
