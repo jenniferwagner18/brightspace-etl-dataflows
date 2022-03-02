@@ -4,7 +4,7 @@ Although instructors can export quiz questions and answer choices under Statisti
 
 It is not possible to download all of the questions in a course's question library. Questions must be added to a quiz in order to be connected to an OrgUnitId.
 
-Note: This workflow does not return students' responses to the questions.
+Note: This workflow does not return students' responses to the questions. (See [Quiz Questions and Student Responses](https://github.com/jenniferwagner18/brightspace-etl-workflows/blob/main/quiz-questions-responses.md)).
 
 ## Return All Quiz Questions and Answer Choices by Course or Quiz
 
