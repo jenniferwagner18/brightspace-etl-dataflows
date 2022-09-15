@@ -4,7 +4,7 @@ The individual attempts survey report that can be generated in Brightspace by D2
 
 ## Return All Survey Responses
 
-To create the ETL Workflow in Domo Analytics: 
+To create the ETL data flow in Domo Analytics: 
 
 1. Start with Survey Attempts, filter by the specific SurveyId (hover over survey name in the course and get the ID from the URL)
 2. Inner join with Users on UserId to get students' names
@@ -15,4 +15,4 @@ To create the ETL Workflow in Domo Analytics:
 7. Select Columns that are needed (for example, Answer is the text of each Likert statement, UserAnswer is the text of the students' response such as Agree, Disagree, etc., and UserSelection is the numerical value that corresponds to UserAnswer)
 8. Remove Duplicates
   
-![ETL Workflow for Return All Survey Responses as described in ordered list](https://jenniferlynnwagner.com/img/etl/domo-etl-survey.png)
+![ETL data flow for Return All Survey Responses as described in ordered list](https://jenniferlynnwagner.com/img/etl/domo-etl-survey.png)
