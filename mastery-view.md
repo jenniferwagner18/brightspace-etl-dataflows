@@ -17,4 +17,4 @@ To create the ETL data flow in Domo Analytics:
   
 ![ETL data flow for Return All Data for Mastery View as described in ordered list](https://jenniferlynnwagner.com/img/etl/domo-etl-outcomes.png)
 
-Note that Not Evaluated in the Mastery View is missing from the data sets since no there is no data to be saved.
+*Note that Not Evaluated in the Mastery View is missing from the data sets since there is no data to be saved.*
