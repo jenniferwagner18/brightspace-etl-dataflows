@@ -4,7 +4,7 @@ Graded rubrics in Brightspace by D2L can only be downloaded individually by goin
 
 ## Return All Graded Rubric Criteria and Scores
 
-To create the ETL Workflow in Domo Analytics: 
+To create the ETL data flow in Domo Analytics: 
 
 1. Start with Rubric Assessment, filter by the specific RubricId (hover over rubric name in the course and get the ID from the URL)
 2. Inner join with Rubric Assessment Criteria on RubricId and UserId
@@ -15,4 +15,4 @@ To create the ETL Workflow in Domo Analytics:
 7. Select Columns that are needed (for example: Rubric Assessment Score for total score, Rubric Assessment Criteria Score for each criterion score, Rubric Object Criteria Name, Rubric Object Criteria SortOrder, Rubric Criteria Levels Description, and Rubric Assessment Criteria Feedback - if any was given to student)
 8. Remove Duplicates
   
-![ETL Workflow for Return All Graded Rubric Criteria and Scores as described in ordered list](https://jenniferlynnwagner.com/img/etl/domo-etl-graded-rubrics.png)
+![ETL data flow for Return All Graded Rubric Criteria and Scores as described in ordered list](https://jenniferlynnwagner.com/img/etl/domo-etl-graded-rubrics.png)
