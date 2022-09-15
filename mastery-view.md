@@ -1,6 +1,6 @@
 # Mastery View of Learning Outcomes
 
-If you are using the Standards tool with learning outcomes in your D2L courses, the Mastery View in the grade book does not have an export option. To generate a CSV file of the data in this view, use the following data flow with the Outcomes data sets.
+If you are using the Standards tool with learning outcomes in your D2L courses, the Mastery View in the grade book does not currently have an export option. To generate a CSV file of the data in this view, use the following data flow with the Outcomes data sets.
 
 ## Return Data for Mastery View
 
