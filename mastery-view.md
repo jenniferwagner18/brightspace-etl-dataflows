@@ -24,7 +24,7 @@ To create the ETL data flow in Domo Analytics:
 12. Filter Rows - add two filter rules where the columns created in steps 9 and 11 (LatestEnrollment and LatestAssessed) both equal 1
 13. Select Columns - in addition to Username, FirstName, and LastName, you will probably want Description from OutcomeDetails for the text of the outcome (I rename this to Outcome), Name from Outcomes Scale Level Definition for the labels of the levels (I rename this to MasteryLevel), IsPublished, ManualOveride which was created in step 10, and Action from Enrollments and Withdrawals for the student's enrollment status
 
-![ETL data flow for Return All Data for Mastery View as described in ordered list](https://jenniferlynnwagner.com/img/etl/domo-etl-mastery-view.png)
+![ETL data flow for Return All Data for Mastery View as described in ordered list](https://jenniferlynnwagner.com/img/etl/domo-etl-mastery-view-status.png)
 
 ### Pivot the Data
 Use [this Python script](https://github.com/jenniferwagner18/brightspace-d2l-scripts/blob/main/d2l-outcomes-pivot.py) if you want to pivot the data so that the students are in rows, the outcomes are in columns, and the levels are the values. This will mostly re-create the Mastery View table in D2L. Or watch this [Outcomes data video](https://mediaspace.msu.edu/media/D2L+Outcomes+Data+PivotTable+to+re-create+Mastery+View/1_2f4z3wn3) to see how to create a pivot table with text-only data in Excel.
