@@ -6,16 +6,23 @@ If you are using the Standards tool with learning outcomes in your D2L courses, 
 
 To create the ETL data flow in Domo Analytics: 
 
-1. Start with OutCome Registry Owners, filter by the specific OrgUnitId
-2. Inner join with Outcomes Demonstrations on RegistryId
-3. Inner Join with Users on AssessedUserId/UserId
-4. Full Outer Join with Outcomes Scale Level Definition on ExplicitlyEnteredScaleLevelId/ScaleLevelId
-5. Inner join with Outcome Details on OutcomeId
-6. Add Formula with two formulas: 
+1. Start with OutCome Registry Owners
+2. Alter Columns so that OwnerId is cast as an integer
+3. Filter by the specific OrgUnitId
+4. Inner join with Outcomes Demonstrations on RegistryId
+5. Inner Join with Users on AssessedUserId/UserId
+6. Full Outer Join with Outcomes Scale Level Definition on ExplicitlyEnteredScaleLevelId/ScaleLevelId
+7. Inner join with Outcome Details on OutcomeId
+8. Inner join with Enrollments and Withdrawals on UserId and OwnerId/OrgUnitId
+9. Rank & Window - enter a new column name (such as LatestEnrollment) with a function using Rank on Enrollment Date in Descending order, partitioned by UserId
+10. Add Formula with these formulas: 
     1. Type a name for a new column, such as ManualOveride, and add the formula **``CASE when `ExplicitlyEnteredScaleLevelId`=`AutomaticallyGeneratedScaleLevelId` then 'FALSE' when `Name` IS NULL then 'FALSE' else 'TRUE' End``** (this creates a new column where TRUE indicates the level was manually chosen in D2L, which is represented by an asterisk in Mastery View)
     2. choose the existing column Name and add the formula: **``IFNULL(`Name`, 'Not evaluated')``**
-8. Filter Rows on **IsPublished not null** (TRUE indicates that the level is not hidden from students in Mastery View - represented by the eye icon)
-9. Select Columns - in addition to Username, FirstName, and LastName, you will probably want Description from OutcomeDetails for the text of the outcome (I rename this to Outcome), Name from Outcomes Scale Level Definition for the labels of the levels (I rename this to MasteryLevel), IsPublished, and ManualOveride which was created in step 6
+    3. choose the existing column IsPublished and add the formula: **``IFNULL(`IsPublished`, 'UNKNOWN')``**
+    4. choose the existing column AssessedDate and add the formula: **``IFNULL(`AssessedDate`, '1970-01-01T00:00:01Z')``**
+11. Rank & Window - enter a new column name (such as LatestAssessed) with a function using Row Number on IsPublished in Ascending and AssessedDate in Descending orders, partitioned by AssessedUserId and Description
+12. Filter Rows - add two filter rules where the columns created in steps 9 and 11 (LatestEnrollment and LatestAssessed) both equal 1
+13. Select Columns - in addition to Username, FirstName, and LastName, you will probably want Description from OutcomeDetails for the text of the outcome (I rename this to Outcome), Name from Outcomes Scale Level Definition for the labels of the levels (I rename this to MasteryLevel), IsPublished, ManualOveride which was created in step 10, and Action from Enrollments and Withdrawals for the student's enrollment status
 
 ![ETL data flow for Return All Data for Mastery View as described in ordered list](https://jenniferlynnwagner.com/img/etl/domo-etl-mastery-view.png)
 
