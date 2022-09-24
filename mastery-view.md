@@ -9,15 +9,15 @@ To create the ETL data flow in Domo Analytics:
 1. Start with OutCome Registry Owners, filter by the specific OrgUnitId
 2. Inner join with Outcomes Demonstrations on RegistryId
 3. Inner Join with Users on AssessedUserId/UserId
-4. Right Join with Outcomes Scale Level Definition on ExplicitlyEnteredScaleLevelId/ScaleLevelId
+4. Full Outer Join with Outcomes Scale Level Definition on ExplicitlyEnteredScaleLevelId/ScaleLevelId
 5. Inner join with Outcome Details on OutcomeId
-6. Add Formula with a name for the new column, such as ManualOveride, and the formula **``CASE when `ExplicitlyEnteredScaleLevelId`=`AutomaticallyGeneratedScaleLevelId` then 'FALSE' else 'TRUE' End``** (this creates a new column where TRUE indicates the level was manually chosen in D2L, which is represented by an asterisk in Mastery View)
-7. Select desired columns - in addition to Username, FirstName, and LastName, you will probably want Description from OutcomeDetails for the text of the outcome (I rename this to OutCome), Name from Outcomes Scale Level Definition for the labels of the levels (I rename this to MasteryLevel), IsPublished, and ManualOveride which was created in step 6
+6. Add Formula with two formulas: 
+    1. Type a name for a new column, such as ManualOveride, and add the formula **``CASE when `ExplicitlyEnteredScaleLevelId`=`AutomaticallyGeneratedScaleLevelId` then 'FALSE' when `Name` IS NULL then 'FALSE' else 'TRUE' End``** (this creates a new column where TRUE indicates the level was manually chosen in D2L, which is represented by an asterisk in Mastery View)
+    2. choose the existing column Name and add the formula: **``IFNULL(`Name`, 'Not evaluated')``**
 8. Filter Rows on **IsPublished not null** (TRUE indicates that the level is not hidden from students in Mastery View - represented by the eye icon)
-  
-![ETL data flow for Return All Data for Mastery View as described in ordered list](https://jenniferlynnwagner.com/img/etl/domo-etl-outcomes.png)
+9. Select Columns - in addition to Username, FirstName, and LastName, you will probably want Description from OutcomeDetails for the text of the outcome (I rename this to Outcome), Name from Outcomes Scale Level Definition for the labels of the levels (I rename this to MasteryLevel), IsPublished, and ManualOveride which was created in step 6
 
-*Note that Not Evaluated in the Mastery View is missing from the data sets since there is no data to be saved.*
+![ETL data flow for Return All Data for Mastery View as described in ordered list](https://jenniferlynnwagner.com/img/etl/domo-etl-mastery-view.png)
 
 ### Pivot the Data
-Use [this Python script](https://github.com/jenniferwagner18/brightspace-d2l-scripts/blob/main/d2l-outcomes-pivot.py) if you want to pivot the data so that the students are in rows, the outcomes are in columns, and the levels are the values. This will mostly re-create the Mastery View table in D2L. Or watch this [this Outcomes data video](https://mediaspace.msu.edu/media/D2L+Outcomes+Data+PivotTable+to+re-create+Mastery+View/1_2f4z3wn3) to see how to create a pivot table with text-only data in Excel.
+Use [this Python script](https://github.com/jenniferwagner18/brightspace-d2l-scripts/blob/main/d2l-outcomes-pivot.py) if you want to pivot the data so that the students are in rows, the outcomes are in columns, and the levels are the values. This will mostly re-create the Mastery View table in D2L. Or watch this [Outcomes data video](https://mediaspace.msu.edu/media/D2L+Outcomes+Data+PivotTable+to+re-create+Mastery+View/1_2f4z3wn3) to see how to create a pivot table with text-only data in Excel.
