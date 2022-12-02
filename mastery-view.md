@@ -8,7 +8,7 @@ To create the ETL data flow in Domo Analytics:
 
 1. Start with Outcome Registry Owners
 2. Alter Columns so that OwnerId is cast as an integer
-3. Filter by the specific OrgUnitId
+3. Filter by the specific OwnerId, which in most cases is also the OrgUnitId
 4. Inner join with Outcomes Demonstrations on RegistryId
 5. Inner Join with Users on AssessedUserId/UserId
 6. Full Outer Join with Outcomes Scale Level Definition on ExplicitlyEnteredScaleLevelId/ScaleLevelId
