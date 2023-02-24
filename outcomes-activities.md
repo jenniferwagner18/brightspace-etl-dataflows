@@ -26,3 +26,5 @@ To create the ETL data flow in Domo Analytics:
 16. Select desired columns
 
 ![ETL data flow for Return All Data for Outcomes with Individual Activities as described in ordered list](https://jenniferlynnwagner.com/img/etl/domo-etl-outcomes-tools.png)
+
+If you need to filter out drafts or deleted activities, there are IsGraded columns in the Discussion Topic User Scores, Assignment Submissions, and Quiz Attempts data sets. Set the filter rule to equals True. (The AssessedDate column in the Outcomes Demonstrations data set logs both drafts and published activities.) There are also IsDeleted columns in the Discussion Topics, Discussion Posts, Assignment Summary, Assignment Submission Details, and Quiz Attempts data sets. Set the filter rule to equals False.
