@@ -2,6 +2,8 @@
 
 If you are using the Standards tool with Learning Outcomes in your D2L courses, the Mastery View of overall levels in the grade book does not currently have an export option. To generate a CSV file, use the following data flow with the Outcomes data sets. In addition to the outcomes and levels achieved for each student, this file will also include the enrollment status of the student (so that you can filter out students who have unenrolled, if needed), whether the level is hidden from the student in D2L, and if the level achieved was automatically generated or a manual override.
 
+If you would like the levels on activities that feed into the overall level shown in Mastery View, there is a separate [Learning Outcomes for Individual Activities data flow](https://github.com/jenniferwagner18/brightspace-etl-dataflows/blob/main/outcomes-activities.md). It can also be added to this data flow as a second output, if desired.
+
 ## Return Data for Mastery View
 
 To create the ETL data flow in Domo Analytics: 
@@ -31,7 +33,7 @@ To create the ETL data flow in Domo Analytics:
 
 ![ETL data flow for Return All Data for Mastery View as described in ordered list](https://jenniferlynnwagner.com/img/etl/domo-etl-mastery-view-status.png)
 
-You can skip steps 8 & 9 and the LatestEnrollment rule in step 12 if you do not need enrollment status for each student. You can also skip the first formula in step 10 if you do not need information on manual overrides.
+You can skip steps 8 & 9 and the LatestEnrollment rule in step 12 if you do not need enrollment status for each student. You can also skip the first formula in step 10 if you do not need information on manual overrides. If you also need the overall feedback entered for the overall level, use the Feedback column in the Outcomes Assessed Checkpoints data set.
 
 ### Pivot the Data
 Use [this Python script](https://github.com/jenniferwagner18/brightspace-d2l-scripts/blob/main/d2l-outcomes-pivot.py) if you want to pivot the data so that the students are in rows, the outcomes are in columns, and the levels are the values. This will mostly re-create the Mastery View table in D2L. Or watch this [Outcomes data video](https://mediaspace.msu.edu/media/D2L+Outcomes+Data+PivotTable+to+re-create+Mastery+View/1_2f4z3wn3) to see how to create a pivot table with text-only data in Excel.
